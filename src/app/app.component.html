@@ -1,15 +1,2 @@
-タスク数: {{ getNumOfCompletedTasks() }} / {{ tasks.length }} 件
-<form (ngSubmit)="addTask(inputTaskNameElem.value)">
-  <input type="text" name="task_name" #inputTaskNameElem />
-  <input type="submit" value="登録" />
-</form>
-
-<ul>
-  <li *ngFor="let task of tasks">
-    {{ task.name }}
-
-    <span *ngIf="task.isCompleted == true"> (済) </span>
-    <span *ngIf="task.isCompleted == false"> (未) </span>
-    <input type="checkbox" [(ngModel)]="task.isCompleted" />
-  </li>
-</ul>
+<mat-toolbar color="primary"> ToDo </mat-toolbar>
+<router-outlet></router-outlet>
