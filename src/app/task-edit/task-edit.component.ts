@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskManagerService } from '../task-manager.service';
 
 @Component({
   selector: 'app-task-edit',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-edit.component.scss'],
 })
 export class TaskEditComponent implements OnInit {
-  constructor() {}
+  constructor(public taskManager: TaskManagerService) {}
 
   ngOnInit(): void {}
 }

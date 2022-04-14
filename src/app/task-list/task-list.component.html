@@ -1,13 +1,3 @@
-<form (ngSubmit)="taskManager.addTask(addTaskNameInput.value)">
-  <mat-form-field appearance="outline" style="width: 100%">
-    <mat-label>タスクを入力</mat-label>
-    <input matInput name="add_task_name" #addTaskNameInput />
-    <button mat-icon-button matSuffix aria-label="登録">
-      <mat-icon>send</mat-icon>
-    </button>
-  </mat-form-field>
-</form>
-
 <mat-selection-list>
   <mat-list-option
     *ngFor="let task of taskManager.getTasks()"
