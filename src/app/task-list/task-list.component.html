@@ -4,6 +4,9 @@
     [(selected)]="task.isCompleted"
   >
     {{ task.name }}
+    <span class="dueDate" *ngIf="task.dueDate != undefined"
+      >({{ task.dueDate | date: "YYYY/MM/dd" }})</span
+    >
   </mat-list-option>
 </mat-selection-list>
 

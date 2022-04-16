@@ -12,10 +12,11 @@ export class TaskManagerService {
     this.loadTasks();
   }
 
-  addTask(taskName: string) {
+  addTask(taskName: string, dueDate?: string) {
     this.tasks.push({
       name: taskName,
       isCompleted: false,
+      dueDate: dueDate ? new Date(dueDate) : undefined,
     });
     this.saveTasks();
   }
