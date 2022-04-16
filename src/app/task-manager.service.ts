@@ -5,7 +5,7 @@ import { TodoTask } from './todo-task';
   providedIn: 'root',
 })
 export class TaskManagerService {
-  tasks: TodoTask[];
+  private tasks: TodoTask[];
 
   constructor() {
     this.tasks = [];
