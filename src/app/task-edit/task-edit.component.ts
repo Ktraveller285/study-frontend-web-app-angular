@@ -6,6 +6,8 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { TaskManagerService } from '../task-manager.service';
 
 @Component({
@@ -14,11 +16,16 @@ import { TaskManagerService } from '../task-manager.service';
   styleUrls: ['./task-edit.component.scss'],
 })
 export class TaskEditComponent implements OnInit, AfterViewInit {
+  editTaskName!: string | null;
+
   @ViewChild('addTaskNameInput') taskNameInputElem!: ElementRef;
 
   constructor(
     public taskManager: TaskManagerService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
+    public snackbar: MatSnackBar
   ) {}
 
   ngAfterViewInit(): void {
@@ -28,5 +35,17 @@ export class TaskEditComponent implements OnInit, AfterViewInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.editTaskName = this.activatedRoute.snapshot.paramMap.get('taskName');
+  }
+
+  saveTask(taskName: string, dueDate?: string) {
+    if (this.editTaskName) {
+      this.taskManager.updateTask(this.editTaskName, taskName, dueDate);
+    } else {
+      this.taskManager.addTask(taskName, dueDate);
+    }
+    this.router.navigate(['']);
+    this.snackbar.open('タスクを保存しました！', 'OK', { duration: 1000 });
+  }
 }

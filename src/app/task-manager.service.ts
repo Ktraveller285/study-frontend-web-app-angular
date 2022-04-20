@@ -21,6 +21,25 @@ export class TaskManagerService {
     this.saveTasks();
   }
 
+  updateTask(oldTaskName: string, taskName: string, dueDate?: string) {
+    // 新しい配列を用意
+    let newTasks = [];
+    for (let task of this.tasks) {
+      if (oldTaskName == task.name) {
+        // 一致していたら…
+        task.name = taskName;
+        task.dueDate = dueDate ? new Date(dueDate) : undefined;
+        newTasks.push(task);
+      } else {
+        // 元のタスク名と入力されたタスク名が一致していなければ…
+        // 入力されたタスク名を配列に入れる
+        newTasks.push(task);
+      }
+    }
+    this.tasks = newTasks;
+    this.saveTasks();
+  }
+
   getTasks(): TodoTask[] {
     return this.tasks;
   }

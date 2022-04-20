@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'add',
     component: TaskEditComponent,
   },
+  {
+    path: 'edit/:taskName',
+    component: TaskEditComponent,
+  },
 ];
 
 @NgModule({

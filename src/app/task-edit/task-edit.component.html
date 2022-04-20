@@ -1,6 +1,4 @@
-<form
-  (ngSubmit)="taskManager.addTask(addTaskNameInput.value, dueDateInput.value)"
->
+<form (ngSubmit)="saveTask(addTaskNameInput.value, dueDateInput.value)">
   <mat-form-field appearance="outline" style="width: 100%">
     <mat-label>タスクを入力</mat-label>
     <input matInput name="add_task_name" #addTaskNameInput />
@@ -18,7 +16,8 @@
     ></mat-datepicker-toggle>
     <mat-datepicker #dueDatePicker></mat-datepicker>
   </mat-form-field>
-
+  <br />
+  編集中のタスク: {{ editTaskName }} <br />
   選択された日付: {{ dueDateInput.value }}
 </form>
 
