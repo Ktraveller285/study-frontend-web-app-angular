@@ -1,2 +1,9 @@
-<mat-toolbar color="primary"> ToDo </mat-toolbar>
+<mat-toolbar color="primary">
+  ToDo
+  <span class="spacer"></span>
+  {{ weather.location.city }}の明日の天気：<img
+    src="{{ weather.forecasts[1].image.url }}"
+    matTooltip="{{ weather.description.text }}"
+  />
+</mat-toolbar>
 <router-outlet></router-outlet>
