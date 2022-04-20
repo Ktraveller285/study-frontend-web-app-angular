@@ -7,6 +7,14 @@
     <span class="dueDate" *ngIf="task.dueDate != undefined"
       >({{ task.dueDate | date: "YYYY/MM/dd" }})</span
     >
+    <button
+      class="edit-button"
+      routerLink="/edit/{{ task.name }}"
+      mat-raised-button
+      color="primary"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
   </mat-list-option>
 </mat-selection-list>
 

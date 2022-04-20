@@ -40,6 +40,22 @@ export class TaskManagerService {
     this.saveTasks();
   }
 
+  deleteTask(editTaskName: string) {
+    // 新しい配列を用意
+    let newTasks = [];
+    // 現状の配列を反復
+    for (let task of this.tasks) {
+      if (task.name != editTaskName) {
+        // 削除したいタスク名でなければ、新しい配列へ追加
+        newTasks.push(task);
+      }
+    }
+    // 現状の配列を新しい配列で上書き
+    this.tasks = newTasks;
+    // localStrageへ配列を保存
+    this.saveTasks();
+  }
+
   getTasks(): TodoTask[] {
     return this.tasks;
   }

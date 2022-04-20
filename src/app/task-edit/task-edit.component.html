@@ -17,9 +17,22 @@
     <mat-datepicker #dueDatePicker></mat-datepicker>
   </mat-form-field>
   <br />
-  編集中のタスク: {{ editTaskName }} <br />
-  選択された日付: {{ dueDateInput.value }}
+  <span *ngIf="editTaskName">
+    編集中のタスク：{{ editTaskName }} <br />
+    選択された日付: {{ dueDateInput.value }}<br
+  /></span>
 </form>
+
+<span *ngIf="editTaskName">
+  <button
+    class="delete-button"
+    mat-raised-button
+    color="warn"
+    (click)="deleteTask()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button></span
+>
 
 <button class="list-button" routerLink="/" mat-fab color="primary">
   <mat-icon>list</mat-icon>

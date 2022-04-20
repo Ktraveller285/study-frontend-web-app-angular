@@ -46,6 +46,15 @@ export class TaskEditComponent implements OnInit, AfterViewInit {
       this.taskManager.addTask(taskName, dueDate);
     }
     this.router.navigate(['']);
-    this.snackbar.open('タスクを保存しました！', 'OK', { duration: 1000 });
+    this.snackbar.open('タスクを保存しました！', undefined, { duration: 1000 });
+  }
+
+  deleteTask() {
+    if (!this.editTaskName) {
+      return;
+    }
+    this.taskManager.deleteTask(this.editTaskName);
+    this.router.navigate(['']);
+    this.snackbar.open('タスクを削除しました！', undefined, { duration: 1000 });
   }
 }
